@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using HelloNetcore.Models;
 using IdentityServer4.Services;
-using IdentityServer4.Test;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

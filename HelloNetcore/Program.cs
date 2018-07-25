@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using HelloNetcore.Data;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace HelloNetcore
@@ -7,7 +8,12 @@ namespace HelloNetcore
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args)
+                .Build()
+                .MigrateDbContext<ApplicationDbContext>((context, services) =>
+                {
+                    new ApplicaitonDbContextSeed().SyncTask(context, services).Wait();
+                }).Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

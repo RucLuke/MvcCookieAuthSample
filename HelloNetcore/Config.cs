@@ -27,7 +27,6 @@ namespace HelloNetcore
                     ClientUri = "http://localhost:5001",
                     LogoUri = "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1583943344,1181826411&fm=58&bpow=750&bpoh=716",
                     AllowRememberConsent = true,
-
                     AllowedGrantTypes= GrantTypes.Implicit,//模式：最简单的模式
                     ClientSecrets={//私钥
                         new Secret("secret".Sha256())

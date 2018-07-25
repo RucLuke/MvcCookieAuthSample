@@ -1,6 +1,7 @@
 ﻿using HelloNetcore.Data;
 using HelloNetcore.Models;
 using HelloNetcore.Services;
+using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -39,9 +40,7 @@ namespace HelloNetcore
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddAspNetIdentity<ApplicationUser>();
 
-
-
-
+            services.AddScoped<IProfileService, ProfileService>();
             services.AddScoped<ConsentService>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
