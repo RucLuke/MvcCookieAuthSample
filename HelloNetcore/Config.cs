@@ -27,19 +27,25 @@ namespace HelloNetcore
                     ClientUri = "http://localhost:5001",
                     LogoUri = "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=1583943344,1181826411&fm=58&bpow=750&bpoh=716",
                     AllowRememberConsent = true,
-                    AllowedGrantTypes= GrantTypes.Implicit,//模式：最简单的模式
-                    ClientSecrets={//私钥
+                    AllowedGrantTypes= GrantTypes.HybridAndClientCredentials,//模式：最简单的模式
+                    AllowOfflineAccess = true,
+                    AllowAccessTokensViaBrowser = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    ClientSecrets ={//私钥
                         new Secret("secret".Sha256())
-                    },
-                    AllowedScopes={//可以访问的Resource
+                            },
+
+                    AllowedScopes ={//可以访问的Resource
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.OpenId,
-                    },
-                    RedirectUris={"http://localhost:5001/signin-oidc"},//跳转登录到的客户端的地址
-                    PostLogoutRedirectUris={"http://localhost:5001/signout-callback-oidc"},//跳转登出到的客户端的地址
-                    RequireConsent=true//是否需要用户点击确认进行跳转
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "api"
+                     },
+                    RedirectUris ={ "http://localhost:5001/signin-oidc"},//跳转登录到的客户端的地址
+                    PostLogoutRedirectUris ={ "http://localhost:5001/signout-callback-oidc"},//跳转登出到的客户端的地址
+                    RequireConsent = true//是否需要用户点击确认进行跳转
                 }
-            };
+    };
         }
 
 
